@@ -10,6 +10,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { StatementsComponent } from './pages/statements/statements.component';
 import { TransfersComponent } from './pages/transfers/transfers.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { TransfersComponent } from './pages/transfers/transfers.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ModalModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
