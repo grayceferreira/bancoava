@@ -1,0 +1,23 @@
+<!-- <app-toasts></app-toasts> -->
+<div class="image-background">
+
+    <div class="wrapper fadeInDown">
+        <!-- <app-loading *ngIf="busy"></app-loading> -->
+
+        <div id="formContent">
+
+            <div class="fadeIn first">
+                <img src="../../assets/images/logo2.png" id="icon" alt="User Icon" />
+            </div>
+
+            <form>
+                <input type="text" id="usuario" class="fadeIn second" name="usuario" placeholder="Usuário" formControlName="usuario" autocomplete="usuario" (keyup.enter)="enviar()" [ngClass]="{'fibra-form-danger': (!form.controls.usuario.valid && !form.controls.usuario.pristine)}">
+                <input type="password" id="senha" class="fadeIn third" name="senha" placeholder="Senha" (keyup.enter)="enviar()" formControlName="senha" [ngClass]="{'fibra-form-danger': (!form.controls.senha.valid && !form.controls.senha.pristine)}">
+                <button type="button" class="fadeIn fourth" [disabled]="form.invalid" (click)="enviar()">Enviar</button>
+            </form>
+            <!-- <div id="formFooter">
+                <a class="underlineHover" href="#">Forgot Password?</a>
+            </div> -->
+        </div>
+    </div>
+</div>
