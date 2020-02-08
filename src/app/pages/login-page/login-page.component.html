@@ -13,7 +13,7 @@
             <form>
                 <input type="text" id="usuario" class="fadeIn second" name="usuario" placeholder="Usuário" formControlName="usuario" autocomplete="usuario" (keyup.enter)="enviar()" [ngClass]="{'fibra-form-danger': (!form.controls.usuario.valid && !form.controls.usuario.pristine)}">
                 <input type="password" id="senha" class="fadeIn third" name="senha" placeholder="Senha" (keyup.enter)="enviar()" formControlName="senha" [ngClass]="{'fibra-form-danger': (!form.controls.senha.valid && !form.controls.senha.pristine)}">
-                <button type="button" class="fadeIn fourth" [disabled]="form.invalid" (click)="enviar()">Enviar</button>
+                <button type="button" class="fadeIn fourth" (click)="enviar()">Enviar</button>
             </form>
             <!-- <div id="formFooter">
                 <a class="underlineHover" href="#">Forgot Password?</a>
