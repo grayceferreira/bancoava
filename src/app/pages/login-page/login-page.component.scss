@@ -9,6 +9,12 @@ body {
     width: auto;
     background-image: url('../../../assets/images/background.jpg');
     background-position: 50% 50%;
+
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    min-width: 100%;
+    min-height: 100%;
 }
 
 .fadeIn.first img {

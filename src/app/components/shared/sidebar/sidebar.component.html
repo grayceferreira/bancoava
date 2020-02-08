@@ -1,0 +1,17 @@
+<div class="wrapper-sidebar">
+    <nav id="sidebar" [class.active]="_toggle">
+        <ul class="list-unstyled components">
+            <li>
+                <a>Home</a>
+            </li>
+            <li>
+                <a [routerLink]="['/statements']" routerLinkActive="actived">Extrato</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div id="content">
+        <!-- <app-breadcrumb></app-breadcrumb> -->
+        <router-outlet></router-outlet>
+    </div>
+</div>
