@@ -1,3 +1,123 @@
 <app-header></app-header>
-<p>transfers works!</p>
+<div class="transf">
+  <div class="p-2 mt-2 border border-dark">
+    <p>Ag. 0000 | C/C: 00.000000.0</p>
+    <p>Saldo de Conta Corrente: (R$): 00,00</p>
+  </div>
+  <div class="divTransf">
+    <form class="formTransf">
+      <ul>
+        <div>
+          <li>
+            <span>Enviar para: </span>
+            <hr>
+          </li>
+          <li class="form-group">
+            <span for="codBanco">Codigo Banco: </span>
+            <input type="text" class="form-control">
+          </li>
+          <li class="form-group">
+            <span for="tipoConta">Tipo de Conta</span>
+            <select class="form-control">
+              <option>Conta Corrente</option>
+              <option>Conta Poupança</option>
+            </select>
+          </li>
+          <li class="form-group">
+            <span for="agencia">Agencia</span>
+            <input type="text" class="form-control">
+          </li>
+          <li class="form-group">
+            <span for="conta">Conta</span>
+            <input type="text" class="form-control">
+          </li>
+          <!-- <li class="form-group">
+            <span for="tipoConta">Número do CPF/CNPJ</span>
+            <div class="flexItens">
+              <select class="form-control col-md-5">
+                <option>CPF</option>
+                <option>CNPJ</option>
+              </select>
+              <input type="text" class="form-control ml-1 col-md-7">
+          </div>
+          </li>
+          <li class="form-group">
+            <span for="nome">Nome</span>
+            <input type="text" class="form-control">
+          </li> -->
+        </div>
+      </ul>
+    </form>
+    <form class="formTransf">
+      <ul>
+        <div>
+          <li>
+            <span>Dados da Transação: </span>
+            <hr>
+          </li>
+          <li class="form-group">
+              <span for="codBanco">Valor R$: </span>
+              <div class="flexItens">
+                <input type="text" class="form-control col-md-6">
+                <select class="form-control ml-3 col-md-5">
+                  <option>DOC</option>
+                  <option>TED</option>
+                </select>
+              </div>
+          </li>
+          <li class="form-group">
+            <span for="tipoConta">Finalidade</span>
+            <select class="form-control">
+              <option>Credito em Conta</option>
+              <option>Pagamento de Impostos</option>
+              <option>Pagamento de Dividendos</option>
+              <option>Pagamento de Salarios</option>
+              <option>Pagamento de Fornecedores</option>
+              <option>Pagamento de Honorarios</option>
+              <option>Pagamento de alugueis e taxas de condominio</option>
+              <option>Pagamento de duplicatas e titulos</option>
+              <option>Pagamento de mensalidade escolar</option>
+              <option>Pensao alimenticia</option>
+              <option>Outros</option>
+            </select>
+          </li>
+          <li class="form-group">
+            <span for="agencia">Histórico</span>
+            <input type="text" class="form-control">
+          </li>
+        </div>
+      </ul>
+    </form>
+    <form class="formTransf">
+      <ul>
+        <div>
+          <li>
+            <span>Informe a data: </span>
+            <hr>
+          </li>
+          <li class="form-group">
+            <input type="radio">
+            <label class="ml-1"> Transferir hoje </label>
+          </li>
+          <li class="form-group">
+              <input type="radio">
+              <label class="ml-1"> Agendar para: </label>
+              <br><br>
+              <input type="date" class="form-control">
+          </li>
+          <li class="form-group">
+              <input type="radio">
+              <label class="ml-1 mt-3"> Programar Tranferência </label>
+          </li>
+        </div>
+      </ul>
+    </form>
+  </div>
+  <div class="d-flex flex-row-reverse mr-5">
+    <button type="submit" class="btn btnTransf ml-3 mr-5">Continuar</button>
+    <button type="submit" class="btn btnTransf">Cancelar</button>
+  </div>
+</div>
+
+
 <app-footer></app-footer>
