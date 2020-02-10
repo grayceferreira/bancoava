@@ -10,31 +10,62 @@ import { TransfersComponent } from './pages/transfers/transfers.component';
 
 
 const routes: Routes = [{
-  path: 'login',
-  component: LoginPageComponent
-}, {    
-  path: 'workflow',
-  component: FramePageComponent,
+  path: '',
+    component: FramePageComponent,
+    // canActivate: [AuthService],
+    children: [
+      {
+        path: '',
+        component: HomeComponent
+      }
+    ]
   }, {
   path: 'home',
-  component: HomeComponent
-}, {
-  path: 'transfers',
-  component: TransfersComponent
-}, {
-  path: 'statements',
-  component: StatementsComponent
-}, {
-  path: 'not-found',
-  component: NotFoundComponent
-}, {
-  path: '',
-  pathMatch: 'full',
-  redirectTo: 'login'
-}, {
-  path: '**',
-  redirectTo: 'not-found'
-}];
+    component: FramePageComponent,
+    // canActivate: [AuthService],
+    children: [
+      {
+        path: '',
+        component: HomeComponent
+      }
+    ]
+  }, 
+  { 
+    path: 'login', 
+    component: LoginPageComponent 
+  },  
+  {
+    path: 'statement',
+      component: FramePageComponent,
+      // canActivate: [AuthService],
+      children: [
+        {
+          path: '',
+          component: StatementsComponent
+        }
+      ]
+    },
+  {
+    path: 'transfer',
+      component: FramePageComponent,
+    // canActivate: [AuthService],
+        children: [
+        {
+          path: '',
+          component: TransfersComponent
+        }
+      ]
+  }, {
+    path: 'not-found',
+    component: NotFoundComponent
+  }, {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'login'
+  }, {
+    path: '**',
+    redirectTo: 'not-found'
+  }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

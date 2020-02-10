@@ -1,0 +1,17 @@
+footer {
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  height: 60px;
+  width: 100%;
+  background: #999;
+}
+
+.blueAva {
+  background-color: #043e6d;
+}
+
+.whiteAva {
+  color: white;
+}
+/*# sourceMappingURL=footer.component.css.map */

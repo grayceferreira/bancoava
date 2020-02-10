@@ -2,10 +2,13 @@
     <nav id="sidebar" [class.active]="_toggle">
         <ul class="list-unstyled components">
             <li>
-                <a>Home</a>
+                <a [routerLink]="['/home']" routerLinkActive="actived">Inicio</a>
             </li>
             <li>
-                <a [routerLink]="['/statements']" routerLinkActive="actived">Extrato</a>
+                <a [routerLink]="['/statement']" routerLinkActive="actived">Extrato</a>
+            </li>
+            <li>
+                <a [routerLink]="['/transfer']" routerLinkActive="actived">Transferência</a>
             </li>
         </ul>
     </nav>
