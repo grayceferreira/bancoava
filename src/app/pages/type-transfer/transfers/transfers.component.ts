@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-transfers',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TransfersComponent implements OnInit {
 
-  constructor() { }
+  otherBank = true;
+
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit() {
   }
 
+  cancelar() {
+    this.router.navigate(['transfer']);
+  }
 }

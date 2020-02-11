@@ -1,9 +1,9 @@
-<div class="transf">
+<div class="transf container">
   <div class="p-2 mt-2 border border-dark">
     <p>Ag. 0000 | C/C: 00.000000.0</p>
     <p>Saldo de Conta Corrente: (R$): 00,00</p>
   </div>
-  <div class="divTransf">
+  <div class="divTransf container">
     <form class="formTransf">
       <ul>
         <div>
@@ -11,15 +11,21 @@
             <span>Enviar para: </span>
             <hr>
           </li>
-          <li class="form-group">
+          <li class="form-group" *ngIf="otherBank">
             <span for="codBanco">Codigo Banco: </span>
-            <input type="text" class="form-control">
+            <select class="form-control">
+              <option value="0">Selecione...</option>
+              <option value="1">001 - Banco do Brasil S.A</option>
+              <option value="2">033 - Banco Santander (Brasil) S.A.</option>
+              <option value="3">237 - Banco Bradesco S.A.</option>
+              <option value="4">341 - Itaú Unibanco S.A.</option>
+            </select>
           </li>
           <li class="form-group">
             <span for="tipoConta">Tipo de Conta</span>
             <select class="form-control">
-              <option>Conta Corrente</option>
-              <option>Conta Poupança</option>
+              <option value="1">Conta Corrente</option>
+              <option value="2">Conta Poupança</option>
             </select>
           </li>
           <li class="form-group">
@@ -30,12 +36,12 @@
             <span for="conta">Conta</span>
             <input type="text" class="form-control">
           </li>
-          <!-- <li class="form-group">
+          <li class="form-group">
             <span for="tipoConta">Número do CPF/CNPJ</span>
             <div class="flexItens">
               <select class="form-control col-md-5">
-                <option>CPF</option>
-                <option>CNPJ</option>
+                <option value="1">CPF</option>
+                <option value="2">CNPJ</option>
               </select>
               <input type="text" class="form-control ml-1 col-md-7">
           </div>
@@ -43,7 +49,7 @@
           <li class="form-group">
             <span for="nome">Nome</span>
             <input type="text" class="form-control">
-          </li> -->
+          </li>
         </div>
       </ul>
     </form>
@@ -67,17 +73,17 @@
           <li class="form-group">
             <span for="tipoConta">Finalidade</span>
             <select class="form-control">
-              <option>Credito em Conta</option>
-              <option>Pagamento de Impostos</option>
-              <option>Pagamento de Dividendos</option>
-              <option>Pagamento de Salarios</option>
-              <option>Pagamento de Fornecedores</option>
-              <option>Pagamento de Honorarios</option>
-              <option>Pagamento de alugueis e taxas de condominio</option>
-              <option>Pagamento de duplicatas e titulos</option>
-              <option>Pagamento de mensalidade escolar</option>
-              <option>Pensao alimenticia</option>
-              <option>Outros</option>
+              <option value="1">Credito em Conta</option>
+              <option value="2">Pagamento de Impostos</option>
+              <option value="3">Pagamento de Dividendos</option>
+              <option value="4">Pagamento de Salarios</option>
+              <option value="5">Pagamento de Fornecedores</option>
+              <option value="6">Pagamento de Honorarios</option>
+              <option value="7">Pagamento de alugueis e taxas de condominio</option>
+              <option value="8">Pagamento de duplicatas e titulos</option>
+              <option value="9">Pagamento de mensalidade escolar</option>
+              <option value="10">Pensao alimenticia</option>
+              <option value="11">Outros</option>
             </select>
           </li>
           <li class="form-group">
@@ -104,19 +110,13 @@
               <br><br>
               <input type="date" class="form-control">
           </li>
-          <li class="form-group">
-              <input type="radio">
-              <label class="ml-1 mt-3"> Programar Tranferência </label>
-          </li>
         </div>
       </ul>
     </form>
   </div>
   <div class="d-flex flex-row-reverse mr-5">
     <button type="submit" class="btn btnTransf ml-3 mr-5">Continuar</button>
-    <button type="submit" class="btn btnTransf">Cancelar</button>
+    <button type="submit" class="btn btnTransf" (click)="cancelar()">Cancelar</button>
   </div>
 </div>
 
-
-<app-footer></app-footer>

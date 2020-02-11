@@ -11,7 +11,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { FramePageComponent } from './pages/master/frame.page';
 import { StatementsComponent } from './pages/statements/statements.component';
-import { TransfersComponent } from './pages/transfers/transfers.component';
+import { TransfersComponent } from './pages/type-transfer/transfers/transfers.component';
+import { TypeTransferComponent } from './pages/type-transfer/type-transfer.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { TransfersComponent } from './pages/transfers/transfers.component';
     StatementsComponent,
     HomeComponent,
     FramePageComponent,
-    SidebarComponent
+    SidebarComponent,
+    TypeTransferComponent
   ],
   imports: [
     BrowserModule,

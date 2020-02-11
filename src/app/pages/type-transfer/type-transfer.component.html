@@ -1,0 +1,20 @@
+<div class="container d-flex justify-content-between p-5">
+  <div class="card ml-5 mt-5 styledCard" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title text-center"><b>Tranferência para BancoAva</b></h5>
+      <hr>
+      <p class="card-text">Transferências para o <b>BancoAva</b> acontecem com maior agilidade, e sem tarifas para você.</p>
+      <hr>
+      <a [routerLink]="['/transfer/sameBank']" class="card-link">Clique Aqui</a>
+    </div>
+  </div>
+  <div class="card mr-5 mt-5 styledCard" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title text-center"><b>Tranferência para outros Bancos</b></h5>
+      <hr>
+      <p class="card-text">Transferências para <b>outros bancos</b> não possuem tarifas. Porém costumam demorar um pouco mais.</p>
+      <hr>
+      <a [routerLink]="['/transfer/otherBank']" class="card-link">Clique Aqui</a>
+    </div>
+  </div>
+</div>

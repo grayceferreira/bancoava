@@ -6,7 +6,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { FramePageComponent } from './pages/master/frame.page';
 import { StatementsComponent } from './pages/statements/statements.component';
-import { TransfersComponent } from './pages/transfers/transfers.component';
+import { TransfersComponent } from './pages/type-transfer/transfers/transfers.component';
+import { TypeTransferComponent } from './pages/type-transfer/type-transfer.component';
 
 
 const routes: Routes = [{
@@ -29,11 +30,11 @@ const routes: Routes = [{
         component: HomeComponent
       }
     ]
-  }, 
-  { 
-    path: 'login', 
-    component: LoginPageComponent 
-  },  
+  },
+  {
+    path: 'login',
+    component: LoginPageComponent
+  },
   {
     path: 'statement',
       component: FramePageComponent,
@@ -48,8 +49,28 @@ const routes: Routes = [{
   {
     path: 'transfer',
       component: FramePageComponent,
-    // canActivate: [AuthService],
+      // canActivate: [AuthService],
         children: [
+        {
+          path: '',
+          component: TypeTransferComponent
+        }
+      ]
+  }, {
+    path: 'transfer/otherBank',
+      component: FramePageComponent,
+      // canActivate: [AuthService],
+      children: [
+        {
+          path: '',
+          component: TransfersComponent
+        }
+      ]
+  }, {
+    path: 'transfer/sameBank',
+      component: FramePageComponent,
+      // canActivate: [AuthService],
+      children: [
         {
           path: '',
           component: TransfersComponent
