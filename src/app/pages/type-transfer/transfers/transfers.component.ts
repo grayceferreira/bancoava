@@ -8,13 +8,14 @@ import { Router } from '@angular/router';
 })
 export class TransfersComponent implements OnInit {
 
-  otherBank = true;
+  typeTransf: string;
 
   constructor(
     private router: Router
   ) { }
 
   ngOnInit() {
+    this.typeTransf = this.router.url.split('/transfer/')[1];
   }
 
   cancelar() {
