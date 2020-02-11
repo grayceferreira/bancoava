@@ -4,7 +4,7 @@
     <p>Saldo de Conta Corrente: (R$): 00,00</p>
   </div>
   <div class="divTransf container">
-    <form class="formTransf">
+    <form class="formTransf" [formGroup]="formulario">
       <ul>
         <div>
           <li>
@@ -13,7 +13,7 @@
           </li>
           <li class="form-group" *ngIf="typeTransf === 'otherBank'">
             <span for="codBanco">Codigo Banco: </span>
-            <select class="form-control">
+            <select class="form-control" formControlName="codigoBanco">
               <option value="0">Selecione...</option>
               <option value="1">001 - Banco do Brasil S.A</option>
               <option value="2">033 - Banco Santander (Brasil) S.A.</option>
@@ -23,23 +23,23 @@
           </li>
           <li class="form-group">
             <span for="tipoConta">Tipo de Conta</span>
-            <select class="form-control">
+            <select class="form-control" formControlName="tipoConta">
               <option value="1">Conta Corrente</option>
               <option value="2">Conta Poupança</option>
             </select>
           </li>
           <li class="form-group">
             <span for="agencia">Agencia</span>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" formControlName="agencia">
           </li>
           <li class="form-group">
             <span for="conta">Conta</span>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" formControlName="conta">
           </li>
           <li class="form-group">
             <span for="tipoConta">Número do CPF/CNPJ</span>
             <div class="flexItens">
-              <select class="form-control col-md-5">
+              <select class="form-control col-md-5" formControlName="cpf">
                 <option value="1">CPF</option>
                 <option value="2">CNPJ</option>
               </select>
@@ -48,12 +48,12 @@
           </li>
           <li class="form-group">
             <span for="nome">Nome</span>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" formControlName="nome">
           </li>
         </div>
       </ul>
     </form>
-    <form class="formTransf">
+    <form class="formTransf" [formGroup]="formulario">
       <ul>
         <div>
           <li>
@@ -63,8 +63,8 @@
           <li class="form-group">
               <span for="codBanco">Valor R$: </span>
               <div class="flexItens">
-                <input type="text" class="form-control col-md-6">
-                <select class="form-control ml-3 col-md-5">
+                <input type="text" class="form-control col-md-6" formControlName="valor">
+                <select class="form-control ml-3 col-md-5" formControlName="tipoTransferencia">
                   <option>DOC</option>
                   <option>TED</option>
                 </select>
@@ -72,7 +72,7 @@
           </li>
           <li class="form-group">
             <span for="tipoConta">Finalidade</span>
-            <select class="form-control">
+            <select class="form-control" formControlName="finalidade">
               <option value="1">Credito em Conta</option>
               <option value="2">Pagamento de Impostos</option>
               <option value="3">Pagamento de Dividendos</option>
@@ -88,12 +88,12 @@
           </li>
           <li class="form-group">
             <span for="agencia">Histórico</span>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" formControlName="historico">
           </li>
         </div>
       </ul>
     </form>
-    <form class="formTransf">
+    <form class="formTransf" [formGroup]="formulario">
       <ul>
         <div>
           <li>
@@ -108,14 +108,14 @@
               <input type="radio">
               <label class="ml-1"> Agendar para: </label>
               <br><br>
-              <input type="date" class="form-control">
+              <input type="date" class="form-control" formControlName="data">
           </li>
         </div>
       </ul>
     </form>
   </div>
   <div class="d-flex flex-row-reverse mr-5">
-    <button type="submit" class="btn btnTransf ml-3 mr-5">Continuar</button>
+    <button type="submit" class="btn btnTransf ml-3 mr-5" (click)="onSubmit()">Continuar</button>
     <button type="submit" class="btn btnTransf" (click)="cancelar()">Cancelar</button>
   </div>
 </div>
