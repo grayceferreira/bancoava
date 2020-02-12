@@ -7,12 +7,13 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { FramePageComponent } from './pages/master/frame.page';
 import { StatementsComponent } from './pages/statements/statements.component';
 import { TransfersComponent } from './pages/transfers/transfers.component';
+import { AuthService } from './services/authority/auth.service';
 
 
 const routes: Routes = [{
   path: '',
     component: FramePageComponent,
-    // canActivate: [AuthService],
+    canActivate: [AuthService],
     children: [
       {
         path: '',
@@ -22,7 +23,7 @@ const routes: Routes = [{
   }, {
   path: 'home',
     component: FramePageComponent,
-    // canActivate: [AuthService],
+    canActivate: [AuthService],
     children: [
       {
         path: '',
@@ -48,7 +49,7 @@ const routes: Routes = [{
   {
     path: 'transfer',
       component: FramePageComponent,
-    // canActivate: [AuthService],
+      // canActivate: [AuthService],
         children: [
         {
           path: '',

@@ -1,10 +1,13 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { HeaderComponent } from './components/shared/header/header.component';
+import { LoadingComponent } from './components/shared/loading/loading.component';
 import { NotFoundComponent } from './components/shared/not-found/not-found.component';
 import { SidebarComponent } from './components/shared/sidebar/sidebar.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -24,11 +27,15 @@ import { TransfersComponent } from './pages/transfers/transfers.component';
     StatementsComponent,
     HomeComponent,
     FramePageComponent,
-    SidebarComponent
+    SidebarComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
