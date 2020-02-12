@@ -27,12 +27,13 @@
 ul {
   display: grid;
   height: 400px;
-  max-width: 250px;
+  max-width: 280px;
   grid-gap: 15px;
   margin: 20px;
   border-radius: 4px;
   background: #133251;
   padding: 20px;
+  overflow-y: scroll;
 }
 
 li {

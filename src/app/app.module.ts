@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -13,7 +14,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { FramePageComponent } from './pages/master/frame.page';
 import { StatementsComponent } from './pages/statements/statements.component';
-import { TransfersComponent } from './pages/transfers/transfers.component';
+import { TransfersComponent } from './pages/type-transfer/transfers/transfers.component';
+import { TypeTransferComponent } from './pages/type-transfer/type-transfer.component';
 
 @NgModule({
   declarations: [
@@ -27,13 +29,15 @@ import { TransfersComponent } from './pages/transfers/transfers.component';
     HomeComponent,
     FramePageComponent,
     SidebarComponent,
-    LoadingComponent
+    LoadingComponent,
+    TypeTransferComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

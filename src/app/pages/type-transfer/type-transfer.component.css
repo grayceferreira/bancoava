@@ -1,0 +1,14 @@
+.styledCard {
+  background: #043e6d;
+  border-radius: 4px;
+  color: white;
+}
+
+.styledCard hr {
+  background: white;
+}
+
+.styledCard a {
+  cursor: pointer;
+}
+/*# sourceMappingURL=type-transfer.component.css.map */

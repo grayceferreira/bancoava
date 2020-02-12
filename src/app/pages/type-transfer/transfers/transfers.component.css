@@ -1,0 +1,91 @@
+.transf {
+  max-width: 1000px;
+  margin: 50px auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.divTransf {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-item-align: center;
+      align-self: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.divTransf button {
+  border: 0;
+  background: #043e6d;
+}
+
+.divTransf strong {
+  color: #FFF;
+  font-size: 24px;
+  margin: 0 15px;
+}
+
+ul {
+  display: -ms-grid;
+  display: grid;
+  height: 400px;
+  max-width: 280px;
+  grid-gap: 15px;
+  margin: 20px;
+  border-radius: 4px;
+  background: #133251;
+  padding: 20px;
+  overflow-y: scroll;
+}
+
+li {
+  list-style-type: none;
+}
+
+li strong {
+  display: block;
+  color: #7159c1;
+  font-size: 20px;
+  font-weight: normal;
+}
+
+li span {
+  display: block;
+  margin-top: 3px;
+  color: #FFF;
+  margin-bottom: 3px;
+}
+
+hr {
+  background-color: white;
+}
+
+.flexItens {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+label {
+  color: #FFF;
+}
+
+.btnTransf {
+  background-color: #133251;
+  color: #FFF;
+}
+/*# sourceMappingURL=transfers.component.css.map */

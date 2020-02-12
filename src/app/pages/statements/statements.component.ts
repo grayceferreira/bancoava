@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { finalize, take, tap } from 'rxjs/operators';
 
-import { ExtratoService } from './extrato.service';
-import { Extrato } from './statements.interface';
+import { Extrato } from '../../models/Statements';
+import { ExtratoService } from '../../services/dataServices/extrato.service';
 
 @Component({
   selector: 'app-statements',
