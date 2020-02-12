@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { HeaderComponent } from './components/shared/header/header.component';
+import { LoadingComponent } from './components/shared/loading/loading.component';
 import { NotFoundComponent } from './components/shared/not-found/not-found.component';
 import { SidebarComponent } from './components/shared/sidebar/sidebar.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -28,6 +29,7 @@ import { TypeTransferComponent } from './pages/type-transfer/type-transfer.compo
     HomeComponent,
     FramePageComponent,
     SidebarComponent,
+    LoadingComponent,
     TypeTransferComponent
   ],
   imports: [

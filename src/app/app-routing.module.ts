@@ -8,12 +8,12 @@ import { FramePageComponent } from './pages/master/frame.page';
 import { StatementsComponent } from './pages/statements/statements.component';
 import { TransfersComponent } from './pages/type-transfer/transfers/transfers.component';
 import { TypeTransferComponent } from './pages/type-transfer/type-transfer.component';
-
+import { AuthService } from './services/authority/auth.service';
 
 const routes: Routes = [{
   path: '',
     component: FramePageComponent,
-    // canActivate: [AuthService],
+    canActivate: [AuthService],
     children: [
       {
         path: '',
@@ -23,7 +23,7 @@ const routes: Routes = [{
   }, {
   path: 'home',
     component: FramePageComponent,
-    // canActivate: [AuthService],
+    canActivate: [AuthService],
     children: [
       {
         path: '',
@@ -38,7 +38,7 @@ const routes: Routes = [{
   {
     path: 'statement',
       component: FramePageComponent,
-      // canActivate: [AuthService],
+      canActivate: [AuthService],
       children: [
         {
           path: '',
@@ -49,7 +49,7 @@ const routes: Routes = [{
   {
     path: 'transfer',
       component: FramePageComponent,
-      // canActivate: [AuthService],
+      canActivate: [AuthService],
         children: [
         {
           path: '',
@@ -59,7 +59,7 @@ const routes: Routes = [{
   }, {
     path: 'transfer/otherBank',
       component: FramePageComponent,
-      // canActivate: [AuthService],
+      canActivate: [AuthService],
       children: [
         {
           path: '',
@@ -69,7 +69,7 @@ const routes: Routes = [{
   }, {
     path: 'transfer/sameBank',
       component: FramePageComponent,
-      // canActivate: [AuthService],
+      canActivate: [AuthService],
       children: [
         {
           path: '',
