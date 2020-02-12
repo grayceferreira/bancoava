@@ -1,4 +1,3 @@
-import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -35,7 +34,6 @@ import { TransfersComponent } from './pages/transfers/transfers.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
