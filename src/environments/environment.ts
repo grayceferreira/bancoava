@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  API_URL: 'mongodb+srv://admin:Cepset1@cluster0-vo2a0.mongodb.net/test?retryWrites=true&w=majority',
 };
 
 /*

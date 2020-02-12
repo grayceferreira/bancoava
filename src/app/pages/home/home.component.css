@@ -1,1 +1,10 @@
-/* No CSS *//*# sourceMappingURL=home.component.css.map */
+.image-background {
+  height: 100vh;
+  background-size: cover;
+  background-image: url("../../../assets/images/logo-style.png");
+}
+
+div#content {
+  background-color: white;
+}
+/*# sourceMappingURL=home.component.css.map */

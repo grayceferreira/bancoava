@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,WAAW,CAAC;EACV,UAAU,EAAE,OAAO;EACnB,aAAa,EAAE,GAAG;EAClB,KAAK,EAAE,KAAK;CASb;;AAZD,AAKE,WALS,CAKT,EAAE,CAAC;EACD,UAAU,EAAE,KAAK;CAClB;;AAPH,AASE,WATS,CAST,CAAC,CAAC;EACA,MAAM,EAAE,OAAO;CAChB",
+    "sources": [
+        "type-transfer.component.scss"
+    ],
+    "names": [],
+    "file": "type-transfer.component.css"
+}

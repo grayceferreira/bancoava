@@ -8,44 +8,44 @@
   width: 100%;
 }
 
-.navbar-logo {
+.navbar .navbar-logo {
   margin-left: 30px;
   width: 155px;
   height: 60px;
 }
 
-.navbar-right {
+.navbar .navbar-right {
   font-size: 25px;
   color: #fff;
   margin-left: auto;
 }
 
-.navbar-right i {
+.navbar .navbar-right i {
   margin-left: 20px;
 }
 
-.navbar-btn {
+.navbar .navbar-btn {
   -webkit-box-shadow: none;
           box-shadow: none;
   outline: none !important;
   border: none;
 }
 
-.badge-notify {
+.navbar .badge-notify {
   position: relative;
   top: -17px;
   right: 8px;
   font-size: 12px;
 }
 
-#sidebarCollapse {
+.navbar #sidebarCollapse {
   width: 40px;
   height: 40px;
   background: none;
   cursor: pointer;
 }
 
-#sidebarCollapse span {
+.navbar #sidebarCollapse span {
   width: 95%;
   height: 3px;
   margin: 0 auto;
@@ -57,28 +57,28 @@
           transition-delay: 0.2s;
 }
 
-#sidebarCollapse span:first-of-type {
+.navbar #sidebarCollapse span:first-of-type {
   -webkit-transform: rotate(45deg) translate(3px, 3px);
           transform: rotate(45deg) translate(3px, 3px);
 }
 
-#sidebarCollapse span:nth-of-type(2) {
+.navbar #sidebarCollapse span:nth-of-type(2) {
   opacity: 0;
 }
 
-#sidebarCollapse span:last-of-type {
+.navbar #sidebarCollapse span:last-of-type {
   -webkit-transform: rotate(-45deg) translate(1px, -1px);
           transform: rotate(-45deg) translate(1px, -1px);
 }
 
-#sidebarCollapse.active span {
+.navbar #sidebarCollapse.active span {
   -webkit-transform: none;
           transform: none;
   opacity: 1;
   margin: 5px auto;
 }
 
-button.dropdown-toggle {
+.navbar button.dropdown-toggle {
   margin-right: -10px !important;
   background: none;
   color: inherit;
@@ -89,21 +89,21 @@ button.dropdown-toggle {
   outline: inherit;
 }
 
-.dropdown-menu {
+.navbar .dropdown-menu {
   left: 15px !important;
 }
 
-.dropdown-menu.show {
+.navbar .dropdown-menu.show {
   padding-right: 15px !important;
 }
 
 @media (max-width: 768px) {
-  .navbar-username {
+  .navbar .navbar-username {
     display: none;
   }
 }
 
-.btn-logout {
+.navbar .btn-logout {
   margin-left: 50px;
   width: 80px;
   border-radius: 10%;
