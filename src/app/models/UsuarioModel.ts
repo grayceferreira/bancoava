@@ -2,7 +2,8 @@ export class UsuarioModel {
     constructor(
         public nome: string,
         public cpf: string,
-        public token: string
+        public token: string,
+        public id: string,
 
         // public Cpf: string,
         // public Senha: string,

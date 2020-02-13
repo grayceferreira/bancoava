@@ -11,4 +11,5 @@ export interface Transfer {
   finalidade: string;
   historico: string;
   data: Date;
+  id: string;
 }

@@ -65,8 +65,9 @@ export class LoginPageComponent implements OnInit {
   async setUsuario(usuario: UsuarioModel) {
     const data = JSON.stringify(usuario);
     localStorage.setItem('bancoava.data', btoa(data));
+    localStorage.setItem('userId', data);
   }
-  
+
   ngOnInit() {
   }
 

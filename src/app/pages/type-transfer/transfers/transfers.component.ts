@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AccountService } from 'src/app/services/dataServices/account.service';
+import { TransferService } from 'src/app/services/dataServices/transfer.service';
+import { UserService } from 'src/app/services/dataServices/userService';
 
 @Component({
   selector: 'app-transfers',
@@ -11,10 +14,14 @@ export class TransfersComponent implements OnInit {
 
   typeTransf: string;
   formulario: FormGroup;
+  account: Account[];
 
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
+    private transferService: TransferService,
+    private userService: UserService,
+    private accountService: AccountService
   ) { }
 
   ngOnInit() {
@@ -34,14 +41,34 @@ export class TransfersComponent implements OnInit {
       historico: [null, Validators.required],
       data: [null]
     });
+
+    this.GetAccountByIdUser();
   }
 
   cancelar() {
     this.router.navigate(['transfer']);
   }
 
+  // getUserId() {
+
+  // }
+
+  GetAccountByIdUser() {
+    const data = localStorage.getItem('userId');
+    const id = JSON.parse(data);
+    this.accountService.GetAccountByIdUser(id._id)
+    .subscribe(response => {
+      this.account = response;
+      console.log(this.account);
+    });
+  }
+
+  GetCpfNameByAgencyAccount() {
+    this.accountService.GetCpfNameByAgencyAccount(this.formulario.value.agencia, this.formulario.value.conta);
+  }
+
   onSubmit() {
     console.log(this.formulario);
-    // this.tranferService.insertTransfer(this.formulario.value);
+    // this.transferService.insertTransfer(this.formulario.value);
   }
 }
