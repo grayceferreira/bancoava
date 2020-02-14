@@ -24,7 +24,7 @@ export class AuthService implements CanActivate {
   public get(): UsuarioModel {
     const data = localStorage.getItem('bancoava.data');
     if (data)
-        return JSON.parse(atob(data));
+        return JSON.parse(data);
     else
         return null;
   }

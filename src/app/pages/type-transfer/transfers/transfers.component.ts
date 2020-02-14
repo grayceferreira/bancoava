@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Conta } from 'src/app/models/Conta';
 import { Transfer } from 'src/app/models/Transfer';
 import { AccountService } from 'src/app/services/dataServices/account.service';
 import { TransferService } from 'src/app/services/dataServices/transfer.service';
@@ -17,13 +18,17 @@ export class TransfersComponent implements OnInit {
   typeTransf: string;
   formulario: FormGroup;
   message: string;
-  account: Account[];
+
+  account: Conta[];
+  estaCarregando = false;
+  conta: Conta;
+  idUser: 1;
+
+
   public maskCpf = [/[1-9]/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/];
   public maskCnpj = [/[1-9]/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/];
   public maskAgency = [/[1-9]/, /\d/, /\d/, /\d/];
   public maskAccount = [/[1-9]/, /\d/, /\d/, /\d/, /\d/, '-', /\d/];
-
-
 
   constructor(
     private router: Router,
@@ -135,14 +140,13 @@ export class TransfersComponent implements OnInit {
   }
 
   GetAccountByIdUser() {
+
     const data = localStorage.getItem('bancoava.data');
     this.accountService.GetAccountByIdUser(data)
     .subscribe(response => {
-      this.account = response;
-      console.log(this.account);
+      this.conta = response;
     });
   }
-
   GetCpfNameByAgencyAccount() {
     this.accountService.GetCpfNameByAgencyAccount(this.formulario.value.agencia, this.formulario.value.conta);
   }
@@ -167,7 +171,7 @@ export class TransfersComponent implements OnInit {
     return this.formulario.get('tipoConta');
   }
 
-  get conta() {
+  get contaUsuario() {
     return this.formulario.get('conta');
   }
 

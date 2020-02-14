@@ -27,4 +27,5 @@ export class UserService {
   getUserById(id) {
     return this.http.get<UsuarioModel>(`${this.url}/usuario/${id}`, { headers: this.composeHeaders() });
   }
+  
 }

@@ -1,7 +1,7 @@
 <div class="transf container">
   <div class="p-2 mt-2 border border-dark">
-    <p>Ag. 0000 | C/C: 00.000000.0</p>
-    <p>Saldo de Conta Corrente: (R$): 00,00</p>
+    <p>Ag. {{ conta.agencia }} | C/C: {{ conta.conta }}</p>
+    <p>Saldo: {{ conta.saldo | currency:'BRL'}}</p>
   </div>
 
   <ngb-alert *ngIf="message">
