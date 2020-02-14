@@ -5,28 +5,26 @@ export class Transfer {
     agencia: string,
     conta: string,
     cpf: string,
-    cnpj: string,
     nome: string,
     valor: number,
     tipoTransferencia: string,
     finalidade: string,
     historico: string,
     data: Date,
-    id: string,
+    contaOrigem: string,
   ) {
     this.idBanco = idBanco;
     this.tipoConta = tipoConta;
     this.agencia = agencia;
     this.conta = conta;
     this.cpf = cpf;
-    this.cnpj = cnpj;
     this.nome = nome;
     this.valor = valor;
     this.tipoTransferencia = tipoTransferencia;
     this.finalidade = finalidade;
     this.historico = historico;
     this.data = data;
-    this.id = id;
+    this.contaOrigem = contaOrigem;
   }
 
   idBanco: number;
@@ -34,12 +32,11 @@ export class Transfer {
   agencia: string;
   conta: string;
   cpf: string;
-  cnpj: string;
   nome: string;
   valor: number;
   tipoTransferencia: string;
   finalidade: string;
   historico: string;
   data: Date;
-  id: string;
+  contaOrigem: string;
 }

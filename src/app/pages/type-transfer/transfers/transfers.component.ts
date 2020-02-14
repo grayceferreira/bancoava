@@ -127,14 +127,13 @@ export class TransfersComponent implements OnInit {
       dadosFormulario.agencia,
       dadosFormulario.conta,
       dadosFormulario.cpf,
-      dadosFormulario.cnpj,
       dadosFormulario.nome,
       dadosFormulario.valor,
       dadosFormulario.tipoTransferencia,
       dadosFormulario.finalidade,
       dadosFormulario.historico,
       dadosFormulario.data,
-      dadosFormulario.id
+      dadosFormulario.contaOrigem
     );
 
     return body;

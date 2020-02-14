@@ -63,11 +63,11 @@
           </li>
           <li class="form-group" *ngIf="typeTransf !== 'otherBank'">
             <span for="tipoConta">Número do CPF</span>
-            <input type="text" class="form-control" disabled formControlName="cpf" [textMask]="{ mask: maskCpf }">
+            <input type="text" class="form-control" formControlName="cpf" [textMask]="{ mask: maskCpf }">
           </li>
           <li class="form-group" *ngIf="typeTransf !== 'otherBank'">
             <span for="nome">Nome</span>
-            <input type="text" class="form-control" disabled formControlName="nome">
+            <input type="text" class="form-control" formControlName="nome">
           </li>
         </div>
       </ul>
@@ -91,8 +91,8 @@
           <li class="form-group">
             <span for="tipoTransferencia">Tipo de transferência: </span>
             <select class="form-control" formControlName="tipoTransferencia">
-              <option>DOC</option>
-              <option>TED</option>
+              <option value="1">DOC</option>
+              <option value="2">TED</option>
             </select>
             <div *ngIf="tipoTransferencia.invalid && tipoTransferencia.touched">
               <p class="mt-1" style="color:red" *ngIf="tipoTransferencia.errors.required">
