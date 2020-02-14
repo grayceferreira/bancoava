@@ -35,20 +35,20 @@
           </li>
           <li class="form-group">
             <span for="agencia">Agencia</span>
-            <input type="text" class="form-control" formControlName="agencia">
+            <input type="text" class="form-control" formControlName="agencia" [textMask]="{mask: maskAgency}">
           </li>
           <li class="form-group">
             <span for="conta">Conta</span>
-            <input type="text" class="form-control" formControlName="conta">
+            <input type="text" class="form-control" formControlName="conta" [textMask]="{mask: maskAccount}">
           </li>
           <li class="form-group" *ngIf="typeTransf !== 'otherBank'">
             <span for="tipoConta">Número do CPF/CNPJ</span>
             <div class="flexItens">
-              <select class="form-control col-md-5">
+              <select class="form-control col-md-5" formControlName="tipoDocumento">
                 <option value="1">CPF</option>
                 <option value="2">CNPJ</option>
               </select>
-              <input type="text" class="form-control ml-1 col-md-7" formControlName="cpf">
+              <input type="text" class="form-control ml-1 col-md-7" formControlName="cpf" [textMask]="{ mask: maskCpf }">
           </div>
           </li>
           <li class="form-group" *ngIf="typeTransf !== 'otherBank'">

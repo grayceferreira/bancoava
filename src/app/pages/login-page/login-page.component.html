@@ -11,7 +11,7 @@
             </div>
 
             <form [formGroup]="form">
-                <input type="text" id="cpf" class="fadeIn second cpf-mask" name="cpf" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" placeholder="Ex.: 000.000.000-00" formControlName="cpf" autocomplete="cpf" (keyup.enter)="enviar()">
+                <input type="text" id="cpf" class="fadeIn second cpf-mask" name="cpf" [textMask]="{mask: maskCpf}" placeholder="Ex.: 000.000.000-00" formControlName="cpf" autocomplete="cpf" (keyup.enter)="enviar()">
                 <input type="password" id="senha" class="fadeIn third" name="senha" placeholder="Senha" (keyup.enter)="enviar()" formControlName="senha">
                 <button type="button" class="fadeIn fourth" (click)="enviar()">Enviar</button>
             </form>

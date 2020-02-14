@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { take } from 'rxjs/operators';
 import { Conta } from 'src/app/models/Conta';
 import { AccountService } from 'src/app/services/dataServices/account.service';
 import { TransferService } from 'src/app/services/dataServices/transfer.service';
@@ -18,10 +17,17 @@ export class TransfersComponent implements OnInit {
   typeTransf: string;
   formulario: FormGroup;
   message: string;
+
   account: Conta[];
   estaCarregando = false;
   conta: Conta;
   idUser: 1;
+
+
+  public maskCpf = [/[1-9]/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/];
+  public maskCnpj = [/[1-9]/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/];
+  public maskAgency = [/[1-9]/, /\d/, /\d/, /\d/];
+  public maskAccount = [/[1-9]/, /\d/, /\d/, /\d/, /\d/, '-', /\d/];
 
   constructor(
     private router: Router,
@@ -42,7 +48,7 @@ export class TransfersComponent implements OnInit {
       agencia: [null, Validators.required],
       conta: [null, Validators.required],
       tipoDocumento: [null, Validators.required],
-      documento: [null, [Validators.required, Validators.min(11), Validators.maxLength(13)]],
+      cpf: [null, [Validators.required, Validators.min(11), Validators.maxLength(13)]],
       nome: [null, [Validators.required, Validators.min(3), Validators.maxLength(25)]],
       valor: [null, Validators.required],
       tipoTransferencia: [null, Validators.required],
@@ -67,7 +73,7 @@ export class TransfersComponent implements OnInit {
       return  `with: ${reason}`;
     }
   }
-  
+
   open(confirm) {
     this.modalService.open(confirm, {size: 'sm', ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
@@ -94,11 +100,11 @@ export class TransfersComponent implements OnInit {
         // });
         // return throwError(error);
       })
-      
+
     } else{
       this.message = 'Preencha corretamenta todos os campos.'
     }
-      
+
     // this.tranferService.insertTransfer(this.formulario.value);
 
 
@@ -107,12 +113,9 @@ export class TransfersComponent implements OnInit {
   // }
 
   GetAccountByIdUser() {
-    this.estaCarregando = true;
-    this.accountService.GetAccountByIdUser(this.idUser)
-      .pipe(
-        take(1),
-        // delay(20000),
-      )
+
+    const data = localStorage.getItem('bancoava.data');
+    this.accountService.GetAccountByIdUser(data)
     .subscribe(response => {
       this.conta = response;
     });
