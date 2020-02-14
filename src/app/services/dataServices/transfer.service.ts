@@ -25,6 +25,11 @@ export class TransferService {
   }
 
   insertTransfer(data) {
-    return this.http.post<Transfer>(`${this.url}/transferencia`, data, { headers: this.composeHeaders() });
+    if (data.codigoBanco !== undefined || data.codigoBanco !== '' || data.codigoBanco !== null) {
+      return this.http.post<Transfer>(`${this.url}/transferencia/ava/${data.conta}/${data.id}`, data, { headers: this.composeHeaders() });
+    } else {
+      return this.http.post<Transfer>(`${this.url}/transferencia/outrosBancos/${data.id}`, data, { headers: this.composeHeaders() });
+    }
   }
+  // transferencia/outrosBancos/:contaId
 }

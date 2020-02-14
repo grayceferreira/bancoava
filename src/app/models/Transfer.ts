@@ -1,6 +1,6 @@
 export class Transfer {
   constructor(
-    codigoBanco: number,
+    idBanco: number,
     tipoConta: string,
     agencia: string,
     conta: string,
@@ -14,7 +14,7 @@ export class Transfer {
     data: Date,
     id: string,
   ) {
-    this.codigoBanco = codigoBanco;
+    this.idBanco = idBanco;
     this.tipoConta = tipoConta;
     this.agencia = agencia;
     this.conta = conta;
@@ -29,7 +29,7 @@ export class Transfer {
     this.id = id;
   }
 
-  codigoBanco: number;
+  idBanco: number;
   tipoConta: string;
   agencia: string;
   conta: string;

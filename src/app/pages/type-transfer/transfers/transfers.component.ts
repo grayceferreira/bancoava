@@ -71,7 +71,9 @@ export class TransfersComponent implements OnInit {
 
   onSubmit() {
     console.log(this.formulario);
-    if (this.formulario.valid){
+    if (this.formulario.valid) {
+      const body = this.FillFields();
+      console.log(body);
       this.transferService.insertTransfer(this.formulario)
       .subscribe((data) => {
         alert('suce');
@@ -102,14 +104,13 @@ export class TransfersComponent implements OnInit {
 
   createFormTransfer() {
     this.formulario = this.formBuilder.group({
-      codigoBanco: [null, Validators.compose([Validators.required])],
+      idBanco: [''],
       tipoConta: ['', Validators.compose([Validators.required])],
       agencia: ['', Validators.compose([Validators.required])],
       conta: ['', Validators.compose([Validators.required])],
-      tipoDocumento: ['', Validators.compose([Validators.required])],
       cpf: [''],
       nome: [''],
-      valor: ['', Validators.compose([Validators.required, Validators.pattern('/^[0-9.]+$/')])],
+      valor: ['', Validators.compose([Validators.required])],
       tipoTransferencia: ['', Validators.compose([Validators.required])],
       finalidade: ['', Validators.compose([Validators.required])],
       historico: [''],
@@ -117,11 +118,11 @@ export class TransfersComponent implements OnInit {
     });
   }
 
-  sentData() {
+  FillFields() {
     const dadosFormulario = this.formulario.value;
 
-    const transfer = new Transfer (
-      dadosFormulario.codigoBanco,
+    const body = new Transfer (
+      dadosFormulario.idBanco,
       dadosFormulario.tipoConta,
       dadosFormulario.agencia,
       dadosFormulario.conta,
@@ -136,7 +137,7 @@ export class TransfersComponent implements OnInit {
       dadosFormulario.id
     );
 
-    this.formulario.reset();
+    return body;
   }
 
   GetAccountByIdUser() {
@@ -187,7 +188,7 @@ export class TransfersComponent implements OnInit {
     return this.formulario.get('finalidade');
   }
 
-  get codigoBanco() {
-    return this.formulario.get('codigoBanco');
+  get idBanco() {
+    return this.formulario.get('idBanco');
   }
 }
