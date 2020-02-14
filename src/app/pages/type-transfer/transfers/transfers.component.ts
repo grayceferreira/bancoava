@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Conta } from 'src/app/models/Conta';
 import { AccountService } from 'src/app/services/dataServices/account.service';
 import { TransferService } from 'src/app/services/dataServices/transfer.service';
 import { UserService } from 'src/app/services/dataServices/userService';
@@ -16,7 +17,7 @@ export class TransfersComponent implements OnInit {
   typeTransf: string;
   formulario: FormGroup;
   message: string;
-  account: Account[];
+  account: Conta[];
 
 
   constructor(
@@ -103,13 +104,11 @@ export class TransfersComponent implements OnInit {
   // }
 
   GetAccountByIdUser() {
-    const data = localStorage.getItem('userId');
-    const id = JSON.parse(data);
-    this.accountService.GetAccountByIdUser(id._id)
-    .subscribe(response => {
-      this.account = response;
-      console.log(this.account);
-    });
+    // this.accountService.GetAccountByIdUser(id._id)
+    // .subscribe(response => {
+    //   this.account.push(response);
+    //   console.log(this.account);
+    // });
   }
 
   GetCpfNameByAgencyAccount() {

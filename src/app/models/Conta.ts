@@ -1,4 +1,4 @@
-export interface Account {
+export interface Conta {
   tipo: number;
   agencia: string;
   conta: string;
