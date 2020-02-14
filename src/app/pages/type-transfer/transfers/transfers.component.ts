@@ -70,7 +70,6 @@ export class TransfersComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.formulario);
     if (this.formulario.valid){
       this.transferService.insertTransfer(this.formulario)
       .subscribe((data) => {

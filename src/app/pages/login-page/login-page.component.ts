@@ -38,7 +38,6 @@ export class LoginPageComponent implements OnInit {
   async enviar() {
     this.busy = true;
     this.form.value.cpf = this.tranformCPF(this.form.value.cpf);
-    console.log(this.form.value);
     this.service.autenticar(this.form.value)
       .subscribe((result) => {
         this.busy = false;
@@ -47,17 +46,12 @@ export class LoginPageComponent implements OnInit {
         this.router.navigate(['/']);
       }, err => {
 
-        // var ex = 'Falha';
-
         this.toastService.show('teste', {
           classname: 'bg-danger text-light',
           delay: 5000,
           autohide: true,
           headertext: 'Opps!'
         });
-
-        console.log('Opps');
-
         this.busy = false;
       });
   }

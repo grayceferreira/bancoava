@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { finalize, take, tap } from 'rxjs/operators';
+import { take } from 'rxjs/operators';
 import { Conta } from 'src/app/models/Conta';
 import { AccountService } from 'src/app/services/dataServices/account.service';
 
@@ -30,12 +30,7 @@ export class StatementsComponent implements OnInit {
   carregarExtrato() {
     this.extratoService.getExtrato()
       .pipe(
-        tap(resposta => console.log(resposta)),
-        // delay(2000),
         take(1),
-        finalize(() => {
-          console.log('finalize');
-        }),
       )
       .subscribe(response => {
         this.extrato = response;
