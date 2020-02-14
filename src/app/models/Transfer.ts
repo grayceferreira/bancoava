@@ -5,7 +5,6 @@ export class Transfer {
     agencia: string,
     conta: string,
     cpf: string,
-    cnpj: string,
     nome: string,
     valor: number,
     tipoTransferencia: string,
@@ -19,7 +18,6 @@ export class Transfer {
     this.agencia = agencia;
     this.conta = conta;
     this.cpf = cpf;
-    this.cnpj = cnpj;
     this.nome = nome;
     this.valor = valor;
     this.tipoTransferencia = tipoTransferencia;
@@ -34,7 +32,6 @@ export class Transfer {
   agencia: string;
   conta: string;
   cpf: string;
-  cnpj: string;
   nome: string;
   valor: number;
   tipoTransferencia: string;
