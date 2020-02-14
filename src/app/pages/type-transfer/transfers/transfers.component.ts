@@ -108,8 +108,8 @@ export class TransfersComponent implements OnInit {
       tipoConta: ['', Validators.compose([Validators.required])],
       agencia: ['', Validators.compose([Validators.required])],
       conta: ['', Validators.compose([Validators.required])],
-      cpf: [''],
-      nome: [''],
+      cpf: ['', Validators.compose([Validators.required])],
+      nome: ['', Validators.compose([Validators.required])],
       valor: ['', Validators.compose([Validators.required])],
       tipoTransferencia: ['', Validators.compose([Validators.required])],
       finalidade: ['', Validators.compose([Validators.required])],
@@ -189,5 +189,13 @@ export class TransfersComponent implements OnInit {
 
   get idBanco() {
     return this.formulario.get('idBanco');
+  }
+
+  get cpf() {
+    return this.formulario.get('cpf');
+  }
+
+  get nome() {
+    return this.formulario.get('nome');
   }
 }

@@ -64,10 +64,20 @@
           <li class="form-group" *ngIf="typeTransf !== 'otherBank'">
             <span for="tipoConta">Número do CPF</span>
             <input type="text" class="form-control" formControlName="cpf" [textMask]="{ mask: maskCpf }">
+            <div *ngIf="cpf.invalid && cpf.touched">
+              <p class="mt-1" style="color:red" *ngIf="cpf.errors.required">
+                CPF é obrigatório.
+              </p>
+            </div>
           </li>
           <li class="form-group" *ngIf="typeTransf !== 'otherBank'">
             <span for="nome">Nome</span>
             <input type="text" class="form-control" formControlName="nome">
+            <div *ngIf="nome.invalid && nome.touched">
+              <p class="mt-1" style="color:red" *ngIf="nome.errors.required">
+                Nome é obrigatório.
+              </p>
+            </div>
           </li>
         </div>
       </ul>
