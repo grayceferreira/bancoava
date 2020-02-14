@@ -43,18 +43,19 @@ export class TransfersComponent implements OnInit {
 
     this.formulario = this.formBuilder.group({
       codigoBanco: [null],
-
+      idBanco: 2,
       tipoConta: [null, Validators.required],
       agencia: [null, Validators.required],
-      conta: [null, Validators.required],
-      tipoDocumento: [null, Validators.required],
+      contaAva: [null, Validators.required],
+      documento: [null, Validators.required],
       cpf: [null, [Validators.required, Validators.min(11), Validators.maxLength(13)]],
       nome: [null, [Validators.required, Validators.min(3), Validators.maxLength(25)]],
       valor: [null, Validators.required],
       tipoTransferencia: [null, Validators.required],
       finalidade: [null, Validators.required],
       historico: [null, Validators.required],
-      data: [null]
+      data: [null],
+      contaOrigem: [null],
     });
 
     this.GetAccountByIdUser();
@@ -83,23 +84,26 @@ export class TransfersComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.formulario.valid){
-      this.transferService.insertTransfer(this.formulario)
-      .subscribe((data) => {
-        alert('suce')
+   
+    if (this.formulario){
+      console.log(this.formulario)
 
-        // this.carregarTitulo();
+      // this.transferService.insertTransfer(this.formulario)
+      // .subscribe((data) => {
+      //   alert('suce')
 
-      }, error => {
-        // var ex = Errors.sanitiseError(error);
-        // this.toastService.show(ex.message, {
-        //   classname: 'bg-danger text-light',
-        //   delay: 5000,
-        //   autohide: true,
-        //   headertext: 'Opps!'
-        // });
-        // return throwError(error);
-      })
+      //   // this.carregarTitulo();
+
+      // }, error => {
+      //   // var ex = Errors.sanitiseError(error);
+      //   // this.toastService.show(ex.message, {
+      //   //   classname: 'bg-danger text-light',
+      //   //   delay: 5000,
+      //   //   autohide: true,
+      //   //   headertext: 'Opps!'
+      //   // });
+      //   // return throwError(error);
+      // })
 
     } else{
       this.message = 'Preencha corretamenta todos os campos.'

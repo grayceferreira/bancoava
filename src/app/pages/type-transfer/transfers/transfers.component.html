@@ -1,7 +1,7 @@
 <div class="transf container">
   <div class="p-2 mt-2 border border-dark">
-    <p>Ag. {{ conta.agencia }} | C/C: {{ conta.conta }}</p>
-    <p>Saldo: {{ conta.saldo | currency:'BRL'}}</p>
+    <p>Ag. {{ conta?.agencia }} | C/C: {{ conta?.conta }}</p>
+    <p>Saldo: {{ conta?.saldo | currency:'BRL'}}</p>
   </div>
 
   <ngb-alert *ngIf="message">
@@ -39,16 +39,18 @@
           </li>
           <li class="form-group">
             <span for="conta">Conta</span>
-            <input type="text" class="form-control" formControlName="conta" [textMask]="{mask: maskAccount}">
+            <input type="text" class="form-control" formControlName="contaAva" [textMask]="{mask: maskAccount}">
           </li>
           <li class="form-group" *ngIf="typeTransf !== 'otherBank'">
             <span for="tipoConta">Número do CPF/CNPJ</span>
             <div class="flexItens">
-              <select class="form-control col-md-5" formControlName="tipoDocumento">
+              <select class="form-control col-md-5" formControlName="documento">
                 <option value="1">CPF</option>
                 <option value="2">CNPJ</option>
               </select>
               <input type="text" class="form-control ml-1 col-md-7" formControlName="cpf" [textMask]="{ mask: maskCpf }">
+              <input type="text" hidden formControlName="contaOrigem" [value]="conta.id">
+
           </div>
           </li>
           <li class="form-group" *ngIf="typeTransf !== 'otherBank'">

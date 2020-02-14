@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { finalize, take, tap } from 'rxjs/operators';
 import { Conta } from 'src/app/models/Conta';
 import { AccountService } from 'src/app/services/dataServices/account.service';
-
-import { Extrato } from '../../models/Statements';
-import { ExtratoService } from '../../services/dataServices/extrato.service';
+import { ExtratoService } from 'src/app/services/dataServices/extrato.service';
 
 @Component({
   selector: 'app-statements',
@@ -13,7 +11,7 @@ import { ExtratoService } from '../../services/dataServices/extrato.service';
 })
 export class StatementsComponent implements OnInit {
 
-  extrato: Array<Extrato>;
+  extrato: any;
   estaCarregando: boolean;
   idUser = 1;
   conta: Conta;
@@ -23,12 +21,13 @@ export class StatementsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // this.carregarExtrato();
     this.GetAccountByIdUser();
+    
   }
 
-  carregarExtrato() {
-    this.extratoService.getExtrato()
+  carregarExtrato(contaId) {
+    console.log('conta:', contaId )
+    this.extratoService.getExtrato(contaId)
       .pipe(
         tap(resposta => console.log(resposta)),
         // delay(2000),
@@ -38,6 +37,7 @@ export class StatementsComponent implements OnInit {
         }),
       )
       .subscribe(response => {
+        console.log('response: ', response);
         this.extrato = response;
       });
   }
@@ -51,6 +51,7 @@ export class StatementsComponent implements OnInit {
       )
     .subscribe(response => {
       this.conta = response;
+      this.carregarExtrato(this.conta._id);
     });
   }
 

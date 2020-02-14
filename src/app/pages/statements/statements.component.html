@@ -1,7 +1,7 @@
 <div class="container">
   <div class="p-2 mt-2 border border-dark">
     <p>Saldo disponível: </p>
-    <h3>{{ conta.saldo | currency:"BRL" }}</h3>
+    <h3>{{ conta?.saldo | currency:"BRL" }}</h3>
   </div>
   <div class="row">
     <div class="col-sm">
@@ -19,9 +19,9 @@
           <tr scope="row" *ngFor="let item of extrato">
             <img src="../../../assets/images/bill.png">
             <td>{{ item.data | date:"dd/MM" }}</td>
-            <td>{{ item.lancamento }}</td>
+            <td>{{ item.historico }}</td>
             <td>{{ item.valor }}</td>
-            <td>{{ item.saldo }}</td>
+            <td>{{ item.nome }}</td>
         </tr>
         </tbody>
       </table>
