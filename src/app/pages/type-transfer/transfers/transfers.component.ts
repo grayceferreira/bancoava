@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Transfer } from 'src/app/models/Transfer';
 import { AccountService } from 'src/app/services/dataServices/account.service';
 import { TransferService } from 'src/app/services/dataServices/transfer.service';
 import { UserService } from 'src/app/services/dataServices/userService';
@@ -36,21 +37,7 @@ export class TransfersComponent implements OnInit {
   ngOnInit() {
     this.typeTransf = this.router.url.split('/transfer/')[1];
 
-    this.formulario = this.formBuilder.group({
-      codigoBanco: [null],
-
-      tipoConta: [null, Validators.required],
-      agencia: [null, Validators.required],
-      conta: [null, Validators.required],
-      tipoDocumento: [null, Validators.required],
-      cpf: [null, [Validators.required, Validators.min(11), Validators.maxLength(13)]],
-      nome: [null, [Validators.required, Validators.min(3), Validators.maxLength(25)]],
-      valor: [null, Validators.required],
-      tipoTransferencia: [null, Validators.required],
-      finalidade: [null, Validators.required],
-      historico: [null, Validators.required],
-      data: [null]
-    });
+    this.createFormTransfer();
 
     this.GetAccountByIdUser();
   }
@@ -78,10 +65,11 @@ export class TransfersComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log(this.formulario);
     if (this.formulario.valid){
       this.transferService.insertTransfer(this.formulario)
       .subscribe((data) => {
-        alert('suce')
+        alert('suce');
 
         // this.carregarTitulo();
 
@@ -94,10 +82,10 @@ export class TransfersComponent implements OnInit {
         //   headertext: 'Opps!'
         // });
         // return throwError(error);
-      })
+      });
 
-    } else{
-      this.message = 'Preencha corretamenta todos os campos.'
+    } else {
+      this.message = 'Preencha corretamenta todos os campos.';
     }
 
     // this.tranferService.insertTransfer(this.formulario.value);
@@ -106,6 +94,45 @@ export class TransfersComponent implements OnInit {
     }  // getUserId() {
 
   // }
+
+  createFormTransfer() {
+    this.formulario = this.formBuilder.group({
+      codigoBanco: [null, Validators.compose([Validators.required])],
+      tipoConta: ['', Validators.compose([Validators.required])],
+      agencia: ['', Validators.compose([Validators.required])],
+      conta: ['', Validators.compose([Validators.required])],
+      tipoDocumento: ['', Validators.compose([Validators.required])],
+      cpf: [''],
+      nome: [''],
+      valor: ['', Validators.compose([Validators.required, Validators.pattern('/^[0-9.]+$/')])],
+      tipoTransferencia: ['', Validators.compose([Validators.required])],
+      finalidade: ['', Validators.compose([Validators.required])],
+      historico: [''],
+      data: ['']
+    });
+  }
+
+  sentData() {
+    const dadosFormulario = this.formulario.value;
+
+    const transfer = new Transfer (
+      dadosFormulario.codigoBanco,
+      dadosFormulario.tipoConta,
+      dadosFormulario.agencia,
+      dadosFormulario.conta,
+      dadosFormulario.cpf,
+      dadosFormulario.cnpj,
+      dadosFormulario.nome,
+      dadosFormulario.valor,
+      dadosFormulario.tipoTransferencia,
+      dadosFormulario.finalidade,
+      dadosFormulario.historico,
+      dadosFormulario.data,
+      dadosFormulario.id
+    );
+
+    this.formulario.reset();
+  }
 
   GetAccountByIdUser() {
     const data = localStorage.getItem('bancoava.data');
@@ -118,5 +145,45 @@ export class TransfersComponent implements OnInit {
 
   GetCpfNameByAgencyAccount() {
     this.accountService.GetCpfNameByAgencyAccount(this.formulario.value.agencia, this.formulario.value.conta);
+  }
+
+  verificaValidTouched(campo) {
+    // this.formulario.get(campo);
+    return !this.formulario.controls[campo].valid && this.formulario.controls[campo].touched;
+  }
+
+  apllyCssError(campo) {
+    return {
+      'has-error': this.verificaValidTouched(campo),
+      'has-feedback': this.verificaValidTouched(campo)
+    };
+  }
+
+  get agencia() {
+    return this.formulario.get('agencia');
+  }
+
+  get tipoConta() {
+    return this.formulario.get('tipoConta');
+  }
+
+  get conta() {
+    return this.formulario.get('conta');
+  }
+
+  get valor() {
+    return this.formulario.get('valor');
+  }
+
+  get tipoTransferencia() {
+    return this.formulario.get('tipoTransferencia');
+  }
+
+  get finalidade() {
+    return this.formulario.get('finalidade');
+  }
+
+  get codigoBanco() {
+    return this.formulario.get('codigoBanco');
   }
 }

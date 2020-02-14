@@ -25,6 +25,11 @@
               <option value="3">237 - Banco Bradesco S.A.</option>
               <option value="4">341 - Itaú Unibanco S.A.</option>
             </select>
+            <div *ngIf="codigoBanco.invalid && codigoBanco.touched">
+              <p class="mt-1" style="color:red" *ngIf="codigoBanco.errors.required">
+                Código do banco é obrigatório.
+              </p>
+            </div>
           </li>
           <li class="form-group">
             <span for="tipoConta">Tipo de Conta</span>
@@ -32,28 +37,37 @@
               <option value="1">Conta Corrente</option>
               <option value="2">Conta Poupança</option>
             </select>
+            <div *ngIf="tipoConta.invalid && tipoConta.touched">
+              <p class="mt-1" style="color:red" *ngIf="tipoConta.errors.required">
+                Tipo de conta é obrigatório.
+              </p>
+            </div>
           </li>
           <li class="form-group">
             <span for="agencia">Agencia</span>
             <input type="text" class="form-control" formControlName="agencia" [textMask]="{mask: maskAgency}">
+            <div *ngIf="!agencia.pristine && agencia.errors || agencia.touched && agencia.invalid">
+              <p class="mt-1" style="color:red" *ngIf="agencia.errors.required">
+                Agencia é obrigatório.
+              </p>
+            </div>
           </li>
           <li class="form-group">
             <span for="conta">Conta</span>
             <input type="text" class="form-control" formControlName="conta" [textMask]="{mask: maskAccount}">
+            <div *ngIf="!conta.pristine && conta.errors || conta.touched && conta.invalid">
+              <p class="mt-1" style="color:red" *ngIf="conta.errors.required">
+                Conta é obrigatório.
+              </p>
+            </div>
           </li>
           <li class="form-group" *ngIf="typeTransf !== 'otherBank'">
-            <span for="tipoConta">Número do CPF/CNPJ</span>
-            <div class="flexItens">
-              <select class="form-control col-md-5" formControlName="tipoDocumento">
-                <option value="1">CPF</option>
-                <option value="2">CNPJ</option>
-              </select>
-              <input type="text" class="form-control ml-1 col-md-7" formControlName="cpf" [textMask]="{ mask: maskCpf }">
-          </div>
+            <span for="tipoConta">Número do CPF</span>
+            <input type="text" class="form-control" disabled formControlName="cpf" [textMask]="{ mask: maskCpf }">
           </li>
           <li class="form-group" *ngIf="typeTransf !== 'otherBank'">
             <span for="nome">Nome</span>
-            <input type="text" class="form-control" formControlName="nome">
+            <input type="text" class="form-control" disabled formControlName="nome">
           </li>
         </div>
       </ul>
@@ -66,14 +80,25 @@
             <hr>
           </li>
           <li class="form-group">
-              <span for="codBanco">Valor R$: </span>
-              <div class="flexItens">
-                <input type="text" class="form-control col-md-6" formControlName="valor">
-                <select class="form-control ml-3 col-md-5" formControlName="tipoTransferencia">
-                  <option>DOC</option>
-                  <option>TED</option>
-                </select>
-              </div>
+            <span for="codBanco">Valor R$: </span>
+            <input type="text" class="form-control" formControlName="valor">
+            <div *ngIf="!valor.pristine && valor.errors || valor.touched && valor.invalid">
+              <p class="mt-1" style="color:red" *ngIf="valor.errors.required">
+                Valor é obrigatório.
+              </p>
+            </div>
+          </li>
+          <li class="form-group">
+            <span for="tipoTransferencia">Tipo de transferência: </span>
+            <select class="form-control" formControlName="tipoTransferencia">
+              <option>DOC</option>
+              <option>TED</option>
+            </select>
+            <div *ngIf="tipoTransferencia.invalid && tipoTransferencia.touched">
+              <p class="mt-1" style="color:red" *ngIf="tipoTransferencia.errors.required">
+                Tipo de tranferência é obrigatório.
+              </p>
+            </div>
           </li>
           <li class="form-group">
             <span for="tipoConta">Finalidade</span>
@@ -90,9 +115,14 @@
               <option value="10">Pensao alimenticia</option>
               <option value="11">Outros</option>
             </select>
+            <div *ngIf="finalidade.invalid && finalidade.touched">
+              <p class="mt-1" style="color:red" *ngIf="finalidade.errors.required">
+                Finalidade é obrigatório.
+              </p>
+            </div>
           </li>
           <li class="form-group">
-            <span for="agencia">Histórico</span>
+            <span for="historco">Histórico</span>
             <input type="text" class="form-control" formControlName="historico">
           </li>
         </div>
