@@ -41,7 +41,7 @@
             <span for="conta">Conta</span>
             <input type="text" class="form-control" formControlName="conta">
           </li>
-          <li class="form-group">
+          <li class="form-group" *ngIf="typeTransf !== 'otherBank'">
             <span for="tipoConta">Número do CPF/CNPJ</span>
             <div class="flexItens">
               <select class="form-control col-md-5">
@@ -51,7 +51,7 @@
               <input type="text" class="form-control ml-1 col-md-7" formControlName="cpf">
           </div>
           </li>
-          <li class="form-group">
+          <li class="form-group" *ngIf="typeTransf !== 'otherBank'">
             <span for="nome">Nome</span>
             <input type="text" class="form-control" formControlName="nome">
           </li>

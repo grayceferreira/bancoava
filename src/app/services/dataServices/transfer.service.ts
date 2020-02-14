@@ -1,28 +1,30 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { shareReplay } from 'rxjs/operators';
+import { Router } from '@angular/router';
 import { Transfer } from 'src/app/models/Transfer';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class TransferService {
   public url = environment.apiUrl;
-  transfer: Transfer;
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private router: Router
   ) { }
 
   public composeHeaders() {
     const headers = new HttpHeaders();
-    headers.set('timeout', "20000")
+    headers.set('timeout', '20000');
+    // headers.set('x-api-key', environment.xApiKey);
+
     return headers;
   }
 
   insertTransfer(data) {
-    return this.http.post(`${this.url}/transfer`, data, { headers: this.composeHeaders() })
-      .pipe(shareReplay(1))
+    return this.http.post<Transfer>(`${this.url}/transferencia`, data, { headers: this.composeHeaders() });
   }
 }

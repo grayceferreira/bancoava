@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { TransferService } from 'src/app/services/transfer/transfer.service';
+import { AccountService } from 'src/app/services/dataServices/account.service';
+import { TransferService } from 'src/app/services/dataServices/transfer.service';
+import { UserService } from 'src/app/services/dataServices/userService';
 
 @Component({
   selector: 'app-transfers',
@@ -14,12 +16,16 @@ export class TransfersComponent implements OnInit {
   typeTransf: string;
   formulario: FormGroup;
   message: string;
+  account: Account[];
+
 
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
-    private tranferService: TransferService,
     private modalService: NgbModal,
+    private transferService: TransferService,
+    private userService: UserService,
+    private accountService: AccountService
   ) { }
 
   ngOnInit() {
@@ -27,18 +33,21 @@ export class TransfersComponent implements OnInit {
 
     this.formulario = this.formBuilder.group({
       codigoBanco: [null],
-      tipoConta: ['', Validators.compose([Validators.required])],
-      agencia: ['', Validators.compose([Validators.required])],
-      conta: ['', Validators.compose([Validators.required])],
-      cpf: ['', Validators.compose([Validators.required])],
-      cnpj: [null],
-      nome: ['', Validators.compose([Validators.required])],
-      valor: ['', Validators.compose([Validators.required])],
-      tipoTransferencia: ['', Validators.compose([Validators.required])],
-      finalidade: [null],
-      historico: [null],
-      data: ['', Validators.compose([Validators.required])],
+
+      tipoConta: [null, Validators.required],
+      agencia: [null, Validators.required],
+      conta: [null, Validators.required],
+      tipoDocumento: [null, Validators.required],
+      documento: [null, [Validators.required, Validators.min(11), Validators.maxLength(13)]],
+      nome: [null, [Validators.required, Validators.min(3), Validators.maxLength(25)]],
+      valor: [null, Validators.required],
+      tipoTransferencia: [null, Validators.required],
+      finalidade: [null, Validators.required],
+      historico: [null, Validators.required],
+      data: [null]
     });
+
+    this.GetAccountByIdUser();
   }
 
   cancelar() {
@@ -65,7 +74,7 @@ export class TransfersComponent implements OnInit {
 
   onSubmit() {
     if (this.formulario.valid){
-      this.tranferService.insertTransfer(this.formulario)
+      this.transferService.insertTransfer(this.formulario)
       .subscribe((data) => {
         alert('suce')
 
@@ -89,5 +98,21 @@ export class TransfersComponent implements OnInit {
     // this.tranferService.insertTransfer(this.formulario.value);
 
 
+    }  // getUserId() {
+
+  // }
+
+  GetAccountByIdUser() {
+    const data = localStorage.getItem('userId');
+    const id = JSON.parse(data);
+    this.accountService.GetAccountByIdUser(id._id)
+    .subscribe(response => {
+      this.account = response;
+      console.log(this.account);
+    });
+  }
+
+  GetCpfNameByAgencyAccount() {
+    this.accountService.GetCpfNameByAgencyAccount(this.formulario.value.agencia, this.formulario.value.conta);
   }
 }
