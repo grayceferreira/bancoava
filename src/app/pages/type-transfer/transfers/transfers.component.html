@@ -55,8 +55,8 @@
           <li class="form-group">
             <span for="conta">Conta</span>
             <input type="text" class="form-control" formControlName="conta" [textMask]="{mask: maskAccount}">
-            <div *ngIf="!conta.pristine && conta.errors || conta.touched && conta.invalid">
-              <p class="mt-1" style="color:red" *ngIf="conta.errors.required">
+            <div *ngIf="!contaUsuario.pristine && contaUsuario.errors || contaUsuario.touched && contaUsuario.invalid">
+              <p class="mt-1" style="color:red" *ngIf="contaUsuario.errors.required">
                 Conta é obrigatório.
               </p>
             </div>
