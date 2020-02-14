@@ -1,7 +1,7 @@
 <div class="transf container">
   <div class="p-2 mt-2 border border-dark">
-    <p>Ag. {{ conta.agencia }} | C/C: {{ conta.conta }}</p>
-    <p>Saldo: {{ conta.saldo | currency:'BRL'}}</p>
+    <p>Ag. 0000 | C/C: 00000-0</p>
+    <p>Saldo: R$ 0000,00</p>
   </div>
 
   <ngb-alert *ngIf="message">
@@ -18,15 +18,15 @@
           </li>
           <li class="form-group" *ngIf="typeTransf === 'otherBank'">
             <span for="codBanco">Codigo Banco: </span>
-            <select class="form-control" formControlName="codigoBanco">
+            <select class="form-control" formControlName="idBanco">
               <option value="0">Selecione...</option>
               <option value="1">001 - Banco do Brasil S.A</option>
               <option value="2">033 - Banco Santander (Brasil) S.A.</option>
               <option value="3">237 - Banco Bradesco S.A.</option>
               <option value="4">341 - Itaú Unibanco S.A.</option>
             </select>
-            <div *ngIf="codigoBanco.invalid && codigoBanco.touched">
-              <p class="mt-1" style="color:red" *ngIf="codigoBanco.errors.required">
+            <div *ngIf="idBanco.invalid && idBanco.touched">
+              <p class="mt-1" style="color:red" *ngIf="idBanco.errors.required">
                 Código do banco é obrigatório.
               </p>
             </div>
