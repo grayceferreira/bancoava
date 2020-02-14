@@ -21,15 +21,16 @@ export class AccountService {
     const headers = new HttpHeaders();
     headers.set('timeout', '20000');
     // headers.set('x-api-key', environment.xApiKey);
-
     return headers;
   }
 
 
   GetAccountByIdUser(id): Observable<Conta> {
+    let data = JSON.parse(localStorage.getItem('bancoava.data'));
 
-    return this.http.get<Conta>(`${this.url}/conta/${ id }`);
-  
+    return this.http.get<Conta>(`${this.url}/conta/${ id }`,  { headers: new HttpHeaders({
+      'Authorization': `bearer ${data.token}`,
+    })});
   }
 
   GetCpfNameByAgencyAccount(agency, account) {

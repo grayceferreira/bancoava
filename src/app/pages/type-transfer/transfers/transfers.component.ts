@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { take } from 'rxjs/operators';
 import { Conta } from 'src/app/models/Conta';
 import { AccountService } from 'src/app/services/dataServices/account.service';
 import { TransferService } from 'src/app/services/dataServices/transfer.service';
@@ -18,7 +19,9 @@ export class TransfersComponent implements OnInit {
   formulario: FormGroup;
   message: string;
   account: Conta[];
-
+  estaCarregando = false;
+  conta: Conta;
+  idUser: 1;
 
   constructor(
     private router: Router,
@@ -104,13 +107,16 @@ export class TransfersComponent implements OnInit {
   // }
 
   GetAccountByIdUser() {
-    // this.accountService.GetAccountByIdUser(id._id)
-    // .subscribe(response => {
-    //   this.account.push(response);
-    //   console.log(this.account);
-    // });
+    this.estaCarregando = true;
+    this.accountService.GetAccountByIdUser(this.idUser)
+      .pipe(
+        take(1),
+        // delay(20000),
+      )
+    .subscribe(response => {
+      this.conta = response;
+    });
   }
-
   GetCpfNameByAgencyAccount() {
     this.accountService.GetCpfNameByAgencyAccount(this.formulario.value.agencia, this.formulario.value.conta);
   }

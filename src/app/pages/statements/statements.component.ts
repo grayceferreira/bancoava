@@ -51,7 +51,6 @@ export class StatementsComponent implements OnInit {
       )
     .subscribe(response => {
       this.conta = response;
-      console.log(this.conta);
     });
   }
 
