@@ -1,4 +1,5 @@
 <div class="transf container">
+  <app-loading *ngIf="estaCarregando"></app-loading>
   <div class="p-2 mt-2 border border-dark">
     <p>Ag. {{ conta?.agencia }} | C/C: {{ conta?.conta }}</p>
     <p>Saldo: {{ conta?.saldo | currency:'BRL'}}</p>

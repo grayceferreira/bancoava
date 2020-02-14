@@ -1,4 +1,6 @@
 <div class="container">
+  <app-loading *ngIf="estaCarregando"></app-loading>
+
   <div class="p-2 mt-2 border border-dark">
     <p>Saldo disponível: </p>
     <h3>{{ conta?.saldo | currency:"BRL" }}</h3>
@@ -12,7 +14,7 @@
           <th scope="col">Data</th>
           <th scope="col">Lançamento</th>
           <th scope="col">Valor (R$)</th>
-          <th scope="col">Saldo (R$)</th>
+          <th scope="col">Beneficiado</th>
         </tr>
         </thead>
         <tbody>

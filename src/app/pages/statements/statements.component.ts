@@ -12,7 +12,7 @@ import { ExtratoService } from 'src/app/services/dataServices/extrato.service';
 export class StatementsComponent implements OnInit {
 
   extrato: any;
-  estaCarregando: boolean;
+  estaCarregando = false;
   idUser = 1;
   conta: Conta;
   constructor(
@@ -26,13 +26,11 @@ export class StatementsComponent implements OnInit {
   }
 
   carregarExtrato(contaId) {
-    console.log('conta:', contaId )
     this.extratoService.getExtrato(contaId)
       .pipe(
         take(1),
       )
       .subscribe(response => {
-        console.log('response: ', response);
         this.extrato = response;
       });
   }
@@ -47,6 +45,7 @@ export class StatementsComponent implements OnInit {
     .subscribe(response => {
       this.conta = response;
       this.carregarExtrato(this.conta._id);
+      this.estaCarregando = false;
     });
   }
 

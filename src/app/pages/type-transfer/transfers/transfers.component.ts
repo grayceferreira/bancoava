@@ -86,30 +86,34 @@ export class TransfersComponent implements OnInit {
   }
 
   onSubmit() {
-    
+    this.estaCarregando = true;
     if (this.formulario.valid) {
       const body = this.FillFields();
       body.contaOrigem = this.conta._id
-      console.log('body: ', body);
-      console.log('conta:', this.conta)
-      // this.transferService.insertTransfer(body)
-      // .subscribe((data) => {
-      //   alert('suce');
 
-      //   // this.carregarTitulo();
+      this.transferService.insertTransfer(body)
+      .subscribe((data) => {
+        this.formulario.reset();
+        this.GetAccountByIdUser();
+        this.estaCarregando = false;
+        // this.carregarTitulo();
 
-      // }, error => {
-      //   // var ex = Errors.sanitiseError(error);
-      //   // this.toastService.show(ex.message, {
-      //   //   classname: 'bg-danger text-light',
-      //   //   delay: 5000,
-      //   //   autohide: true,
-      //   //   headertext: 'Opps!'
-      //   // });
-      //   // return throwError(error);
-      // });
+      }, error => {
+        this.estaCarregando = false;
+
+        // var ex = Errors.sanitiseError(error);
+        // this.toastService.show(ex.message, {
+        //   classname: 'bg-danger text-light',
+        //   delay: 5000,
+        //   autohide: true,
+        //   headertext: 'Opps!'
+        // });
+        // return throwError(error);
+      });
 
     } else {
+      this.estaCarregando = false;
+
       this.message = 'Preencha corretamenta todos os campos.';
     }
 
@@ -158,11 +162,13 @@ export class TransfersComponent implements OnInit {
   }
 
   GetAccountByIdUser() {
-
+    this.estaCarregando = true;
     const data = localStorage.getItem('bancoava.data');
     this.accountService.GetAccountByIdUser(data)
     .subscribe(response => {
       this.conta = response;
+      this.estaCarregando = false;
+
     });
   }
   GetCpfNameByAgencyAccount() {
