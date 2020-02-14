@@ -1,16 +1,17 @@
-.image-background {
+.full {
     height: 100vh;
-    background-size: cover;
-    // width: auto;
+    width: 137vh;
+    align-content: center;
+    background: no-repeat;
+    background-size: contain;
     background-image: url("../../../assets/images/logo-style.png");
-    // background-position: 50% 50%;
-    // position: fixed;
-    // top: 0;
-    // left: 0;
-    // min-width: 100%;
-    // min-height: 100%;
-  }
+}
 
-  div#content {
-    background-color: white;
+.img-warning{
+  height: 100%;
+  width: 100%;
+}
+
+.content {
+  background-color: white;
 }

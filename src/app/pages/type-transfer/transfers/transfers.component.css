@@ -1,6 +1,4 @@
 .transf {
-  max-width: 1000px;
-  margin: 50px auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -38,24 +36,24 @@
 ul {
   display: -ms-grid;
   display: grid;
-  height: 400px;
+  height: 418px;
   max-width: 280px;
   grid-gap: 15px;
   margin: 20px;
   border-radius: 4px;
   background: #133251;
   padding: 20px;
-  overflow-y: scroll;
 }
 
 li {
   list-style-type: none;
+  font-size: 14px;
 }
 
 li strong {
   display: block;
   color: #7159c1;
-  font-size: 20px;
+  font-size: 14px;
   font-weight: normal;
 }
 
@@ -87,5 +85,29 @@ label {
 .btnTransf {
   background-color: #133251;
   color: #FFF;
+}
+
+.formTransf {
+  line-height: 1.0;
+}
+
+.modal-header h4 {
+  text-align: center;
+  font-size: 16px;
+  vertical-align: middle;
+}
+
+.modal-header i {
+  float: left;
+  margin-top: 10px;
+}
+
+.modal-header span {
+  color: #ffffff;
+}
+
+.modal-header {
+  background-color: #043e6d !important;
+  color: #ffffff !important;
 }
 /*# sourceMappingURL=transfers.component.css.map */

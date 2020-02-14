@@ -1,1 +1,16 @@
 <!-- <div class="image-background"></div> -->
+<!-- <img src="../../../assets/images/logo-style.png" class="d-inline-block align-top navbar-logo" alt=""> -->
+
+<div class="content">
+    <div class="container-fluid full"></div>
+</div>
+
+<ng-template #confirm let-d="dismiss">
+  <div class="modal-body text-center">
+      <img src="../../../assets/images/warning.png" class="img-warning">
+    <div class='group-buttons-confirm'>
+        <!-- <button type="button" class="btn btn-primary btn-confim" (click)="openModal()" >Sim</button> -->
+        <button type="button" class="btn btn-light" (click)="d('Close click')">Ok,Estou ciente</button>
+    </div>
+  </div>
+  </ng-template>

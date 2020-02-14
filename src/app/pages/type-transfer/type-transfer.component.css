@@ -11,4 +11,10 @@
 .styledCard a {
   cursor: pointer;
 }
+
+.justify-content-between {
+  -webkit-box-pack: justify !important;
+  -ms-flex-pack: center !important;
+      justify-content: center !important;
+}
 /*# sourceMappingURL=type-transfer.component.css.map */

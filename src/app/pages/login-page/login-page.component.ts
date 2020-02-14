@@ -41,11 +41,9 @@ export class LoginPageComponent implements OnInit {
       .subscribe((result) => {
         this.busy = false;
 
-        alert(JSON.stringify(result));
         this.setUsuario(result);
         this.router.navigate(['/']);
       }, err => {
-        alert(JSON.stringify(err));
 
         // var ex = 'Falha';
 

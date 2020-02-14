@@ -3,6 +3,11 @@
     <p>Ag. 0000 | C/C: 00.000000.0</p>
     <p>Saldo de Conta Corrente: (R$): 00,00</p>
   </div>
+
+  <ngb-alert *ngIf="message">
+      <strong>Warning!</strong> {{ message }}
+  </ngb-alert>
+
   <div class="divTransf container">
     <form class="formTransf" [formGroup]="formulario">
       <ul>
@@ -39,11 +44,11 @@
           <li class="form-group">
             <span for="tipoConta">Número do CPF/CNPJ</span>
             <div class="flexItens">
-              <select class="form-control col-md-5" formControlName="cpf">
+              <select class="form-control col-md-5">
                 <option value="1">CPF</option>
                 <option value="2">CNPJ</option>
               </select>
-              <input type="text" class="form-control ml-1 col-md-7">
+              <input type="text" class="form-control ml-1 col-md-7" formControlName="cpf">
           </div>
           </li>
           <li class="form-group">
@@ -114,9 +119,29 @@
       </ul>
     </form>
   </div>
-  <div class="d-flex flex-row-reverse mr-5">
-    <button type="submit" class="btn btnTransf ml-3 mr-5" (click)="onSubmit()">Continuar</button>
-    <button type="submit" class="btn btnTransf" (click)="cancelar()">Cancelar</button>
+  <div class="d-flex flex-row-reverse mr-5 modal-confirm">
+    <!-- <button type="submit" class="btn btnTransf ml-3 mr-5" (click)="onSubmit()">Continuar</button>
+    <button type="submit" class="btn btnTransf" (click)="cancelar()">Cancelar</button> -->
+    <button class="btn btnTransf ml-3 mr-5" (click)="open(confirm)">Continuar<i class="fa fa-check"></i></button>
+    <button type="button" class="btn btn-danger" (click)="cancelar()">Cancelar</button>
   </div>
 </div>
 
+<ng-template #confirm let-d="dismiss">
+  <div class="modal-center" >
+    <div>
+      <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title">Deseja confirmar?</h4>
+          <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-center">
+        <div class='group-buttons-confirm'>
+            <button type="button" class="btn btn-primary btn-confim" (click)="onSubmit()" >Sim</button>
+            <button type="button" class="btn btn-light" (click)="d('Close click')">Fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

@@ -1,10 +1,19 @@
-.image-background {
+.full {
   height: 100vh;
-  background-size: cover;
+  width: 137vh;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  background: no-repeat;
+  background-size: contain;
   background-image: url("../../../assets/images/logo-style.png");
 }
 
-div#content {
+.img-warning {
+  height: 100%;
+  width: 100%;
+}
+
+.content {
   background-color: white;
 }
 /*# sourceMappingURL=home.component.css.map */
