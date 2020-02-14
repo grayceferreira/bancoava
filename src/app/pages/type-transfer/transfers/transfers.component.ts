@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Conta } from 'src/app/models/Conta';
+import { Transfer } from 'src/app/models/Transfer';
 import { AccountService } from 'src/app/services/dataServices/account.service';
 import { TransferService } from 'src/app/services/dataServices/transfer.service';
 import { UserService } from 'src/app/services/dataServices/userService';
@@ -57,6 +58,7 @@ export class TransfersComponent implements OnInit {
       data: [null],
       contaOrigem: [null],
     });
+    this.createFormTransfer();
 
     this.GetAccountByIdUser();
   }
@@ -84,13 +86,15 @@ export class TransfersComponent implements OnInit {
   }
 
   onSubmit() {
-   
-    if (this.formulario){
-      console.log(this.formulario)
-
-      // this.transferService.insertTransfer(this.formulario)
+    
+    if (this.formulario.valid) {
+      const body = this.FillFields();
+      body.contaOrigem = this.conta._id
+      console.log('body: ', body);
+      console.log('conta:', this.conta)
+      // this.transferService.insertTransfer(body)
       // .subscribe((data) => {
-      //   alert('suce')
+      //   alert('suce');
 
       //   // this.carregarTitulo();
 
@@ -103,10 +107,10 @@ export class TransfersComponent implements OnInit {
       //   //   headertext: 'Opps!'
       //   // });
       //   // return throwError(error);
-      // })
+      // });
 
-    } else{
-      this.message = 'Preencha corretamenta todos os campos.'
+    } else {
+      this.message = 'Preencha corretamenta todos os campos.';
     }
 
     // this.tranferService.insertTransfer(this.formulario.value);
@@ -115,6 +119,44 @@ export class TransfersComponent implements OnInit {
     }  // getUserId() {
 
   // }
+
+  createFormTransfer() {
+    this.formulario = this.formBuilder.group({
+      idBanco: [''],
+      tipoConta: ['', Validators.compose([Validators.required])],
+      agencia: ['', Validators.compose([Validators.required])],
+      conta: ['', Validators.compose([Validators.required])],
+      cpf: [''],
+      nome: [''],
+      valor: ['', Validators.compose([Validators.required])],
+      tipoTransferencia: ['', Validators.compose([Validators.required])],
+      finalidade: ['', Validators.compose([Validators.required])],
+      historico: [''],
+      data: ['']
+    });
+  }
+
+  FillFields() {
+    const dadosFormulario = this.formulario.value;
+
+    const body = new Transfer (
+      dadosFormulario.idBanco,
+      dadosFormulario.tipoConta,
+      dadosFormulario.agencia,
+      dadosFormulario.conta,
+      dadosFormulario.cpf,
+      dadosFormulario.cnpj,
+      dadosFormulario.nome,
+      dadosFormulario.valor,
+      dadosFormulario.tipoTransferencia,
+      dadosFormulario.finalidade,
+      dadosFormulario.historico,
+      dadosFormulario.data,
+      dadosFormulario.contaOrigem 
+    );
+
+    return body;
+  }
 
   GetAccountByIdUser() {
 
@@ -126,5 +168,45 @@ export class TransfersComponent implements OnInit {
   }
   GetCpfNameByAgencyAccount() {
     this.accountService.GetCpfNameByAgencyAccount(this.formulario.value.agencia, this.formulario.value.conta);
+  }
+
+  verificaValidTouched(campo) {
+    // this.formulario.get(campo);
+    return !this.formulario.controls[campo].valid && this.formulario.controls[campo].touched;
+  }
+
+  apllyCssError(campo) {
+    return {
+      'has-error': this.verificaValidTouched(campo),
+      'has-feedback': this.verificaValidTouched(campo)
+    };
+  }
+
+  get agencia() {
+    return this.formulario.get('agencia');
+  }
+
+  get tipoConta() {
+    return this.formulario.get('tipoConta');
+  }
+
+  get contaUsuario() {
+    return this.formulario.get('conta');
+  }
+
+  get valor() {
+    return this.formulario.get('valor');
+  }
+
+  get tipoTransferencia() {
+    return this.formulario.get('tipoTransferencia');
+  }
+
+  get finalidade() {
+    return this.formulario.get('finalidade');
+  }
+
+  get idBanco() {
+    return this.formulario.get('idBanco');
   }
 }
