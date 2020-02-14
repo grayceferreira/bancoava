@@ -13,6 +13,7 @@ import { ToastService } from 'src/app/services/shared/toast.service';
 export class LoginPageComponent implements OnInit {
   public form: FormGroup;
   public busy: boolean = false;
+  public maskCpf = [/[1-9]/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/]
 
   constructor(
     private router: Router,
@@ -36,7 +37,8 @@ export class LoginPageComponent implements OnInit {
 
   async enviar() {
     this.busy = true;
-
+    this.form.value.cpf = this.tranformCPF(this.form.value.cpf);
+    console.log(this.form.value);
     this.service.autenticar(this.form.value)
       .subscribe((result) => {
         this.busy = false;
@@ -69,6 +71,9 @@ export class LoginPageComponent implements OnInit {
   ngOnInit() {
   }
 
-
+  tranformCPF(cpf) {
+    const str = cpf;
+    return str.replace(/[^\d]+/g, '');
+  }
 
 }

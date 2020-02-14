@@ -17,6 +17,11 @@ export class TransfersComponent implements OnInit {
   formulario: FormGroup;
   message: string;
   account: Account[];
+  public maskCpf = [/[1-9]/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/];
+  public maskCnpj = [/[1-9]/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/];
+  public maskAgency = [/[1-9]/, /\d/, /\d/, /\d/];
+  public maskAccount = [/[1-9]/, /\d/, /\d/, /\d/, /\d/, '-', /\d/];
+
 
 
   constructor(
@@ -38,7 +43,7 @@ export class TransfersComponent implements OnInit {
       agencia: [null, Validators.required],
       conta: [null, Validators.required],
       tipoDocumento: [null, Validators.required],
-      documento: [null, [Validators.required, Validators.min(11), Validators.maxLength(13)]],
+      cpf: [null, [Validators.required, Validators.min(11), Validators.maxLength(13)]],
       nome: [null, [Validators.required, Validators.min(3), Validators.maxLength(25)]],
       valor: [null, Validators.required],
       tipoTransferencia: [null, Validators.required],
@@ -63,7 +68,7 @@ export class TransfersComponent implements OnInit {
       return  `with: ${reason}`;
     }
   }
-  
+
   open(confirm) {
     this.modalService.open(confirm, {size: 'sm', ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
@@ -90,11 +95,11 @@ export class TransfersComponent implements OnInit {
         // });
         // return throwError(error);
       })
-      
+
     } else{
       this.message = 'Preencha corretamenta todos os campos.'
     }
-      
+
     // this.tranferService.insertTransfer(this.formulario.value);
 
 
@@ -103,9 +108,8 @@ export class TransfersComponent implements OnInit {
   // }
 
   GetAccountByIdUser() {
-    const data = localStorage.getItem('userId');
-    const id = JSON.parse(data);
-    this.accountService.GetAccountByIdUser(id._id)
+    const data = localStorage.getItem('bancoava.data');
+    this.accountService.GetAccountByIdUser(data)
     .subscribe(response => {
       this.account = response;
       console.log(this.account);
